@@ -43,6 +43,10 @@ for diag, temp in temp_by_diag.items():
     print(f"  {diag:12s} : {temp:.1f} C")
 
 print(f"\n{'=' * 50}")
+# ===== REPARTITION PAR SEXE ET DIAGNOSTIC DE L'EXERCICE 1=====
+print(f"\n--- Repartition par sexe et diagnostic ---")
+sexe_diag = df.groupby(["sexe", "diagnostic"]).size()
+print(sexe_diag)
 print("Exploration terminee !")
 print("Prochain lab : entrainer un modele ML")
 print(f"{'=' * 50}")

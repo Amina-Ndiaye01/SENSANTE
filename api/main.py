@@ -22,11 +22,21 @@ class DiagnosticOutput(BaseModel):
     confiance: str = Field(..., description="Niveau de confiance")
     message: str = Field(..., description="Recommandation")
 # Creer l'application
+from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI(
 title="SenSante API",
 description="Assistant pre-diagnostic medical pour le Senegal",
 version="0.2.0"
 )
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
 # Route de base : verifier que l'API fonctionne
 @app.get("/health")
 def health_check():
